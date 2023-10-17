@@ -16,16 +16,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/styles.css" />
     <title>Weather application</title>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="overview">
-            <h1>Gweru</h1>
+            <h1 id="city">Gweru</h1>
             <ul>
               <li>Friday 15:00</li>
-              <li>Partly cloudy</li>
+              <li id="description">Partly cloudy</li>
             </ul>
             <div class="row">
               <div class="col-6">
@@ -34,15 +35,15 @@
                     src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png"
                     alt="light-rain"
                   />
-                  <strong>12</strong>
+                  <strong id="temperature">12</strong>
                   <span class="units">℃ | <a href="#">℉</a></span>
                 </div>
               </div>
               <div class="col-6">
                 <ul>
                   <li>Precipitation: 0%</li>
-                  <li>Humidity: 75%</li>
-                  <li>Wind: 2km/hr</li>
+                  <li>Humidity: <span id="humidity"></span>%</li>
+                  <li>Wind: <span id="wind"></span>km/hr</li>
                 </ul>
               </div>
             </div>
