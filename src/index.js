@@ -29,9 +29,9 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  celciusTemperature = Math.round(response.data.temperature.current);
+  celciusTemperature = response.data.temperature.current;
 
-  temperatureElement.innerHTML = celciusTemperature;
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
@@ -53,13 +53,13 @@ function handleSubmit(event) {
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemperature = (temperatureElement.innerHTML * 9) / 5 + 32;
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 function displayCelciusTemperature(event) {
   event.preventDefault;
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = celciusTemperature;
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
 }
 
 let celciusTemperature = null;
@@ -71,6 +71,6 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celciusLink = document.querySelector("#celcius-link");
-fahrenheitLink.addEventListener("click", displayCelciusTemperature);
+celciusLink.addEventListener("click", displayCelciusTemperature);
 
 search("Gweru");
