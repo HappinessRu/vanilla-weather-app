@@ -41,7 +41,7 @@ function displayForecast(response) {
   <div class="col-2">
   <div class="weather-forecast-date">${formatDay(forecastDay.time * 1000)}</div>
   <img
-  src="${forecastDay.condition.icon_url}.png"
+  src="${forecastDay.condition.icon_url}"
   alt=""
   width="42"
   />
@@ -50,9 +50,8 @@ function displayForecast(response) {
     forecastDay.temperature.maximum
   )}° </span>
   <span class="weather-forecast-temperature-min"> ${Math.round(
-    forecastDay.temperature.minimun
+    forecastDay.temperature.minimum
   )}° </span>
-  </div>
   </div>
   </div>
   `;
@@ -88,6 +87,7 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
   iconElement.setAttribute("alt", `${response.data.condition.description}`);
+  getForecast(response.data.coordinates);
 }
 function search(city) {
   let apiKey = "30obd20tbb4105040138d6f1055c37a6";
